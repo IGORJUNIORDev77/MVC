@@ -1,0 +1,29 @@
+@model TechStoreMVC.Models.Categoria
+
+@{
+    ViewData["Title"] = "Detalhes da Categoria";
+}
+
+<h1>
+    Lista de Categorias
+</h1>
+
+<dl>
+   <dt class="col-sm-2">Nome</dt>
+   <dd class="col-sm-10">@Model.Nome</dd>
+
+   <dt class="col-sm-2">Descricao</dt>
+   <dd class="col-sm-10">@Model.Descricao</dd>
+</dl>
+
+<a asp-action="Edit"
+    asp-route-id="@Model.Id"
+    class="btn btn-warning">
+    Editar
+</a>
+
+<a asp-action="Index"
+    asp-route-id="@Model.Id"
+    class="btn btn-warning">
+    Voltar
+</a>
