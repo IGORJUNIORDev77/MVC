@@ -1,0 +1,230 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    /* O "position: fixed" garante que a tela ocupe 100% do espaço, ignorando navbars ou footers do _Layout padrão */
+    .custom-auth-page {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+        background-color: #ffffff;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        overflow-y: auto;
+    }
+
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+
+    /* Metade Esquerda: Formulário */
+    .form-section {
+        flex: 1 1 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        background-color: #ffffff;
+        min-width: 320px;
+    }
+
+    .form-wrapper {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    /* Metade Direita: Branding/Imagem */
+    .image-section {
+        flex: 1 1 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* Para colocar uma imagem de fundo real, remova o comentário abaixo e insira a URL */
+        /* background-image: url('https://sua-imagem-aqui.jpg'); */
+        background-size: cover;
+        background-position: center;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 3rem;
+    }
+
+    /* Esconde a imagem em telas pequenas (celulares) - Atenção: no Razor, o arroba do media query precisa ser duplo (@@) */
+    @@media (max-width: 991px) {
+        .image-section {
+            display: none !important;
+        }
+        .form-section {
+            flex: 1 1 100%;
+        }
+    }
+
+    .brand-title {
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: #212529;
+    }
+
+    .subtitle {
+        color: #6c757d;
+        margin-bottom: 2rem;
+    }
+
+    .custom-input {
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        border: 1px solid #ced4da;
+        width: 100%;
+        transition: all 0.3s ease;
+        background-color: #fff;
+        color: #212529;
+    }
+
+    .custom-input:focus {
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.25);
+        border-color: #667eea;
+        outline: none;
+    }
+
+    .btn-custom-primary {
+        background-color: #667eea;
+        border: none;
+        border-radius: 8px;
+        padding: 0.85rem;
+        font-weight: 600;
+        color: white;
+        width: 100%;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+        cursor: pointer;
+    }
+
+    .btn-custom-primary:hover {
+        background-color: #5a6fd6;
+    }
+
+    .btn-outline-dark-custom {
+        border: 1px solid #ced4da;
+        background: white;
+        border-radius: 8px;
+        padding: 0.75rem;
+        font-weight: 500;
+        color: #212529;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .btn-outline-dark-custom:hover {
+        background: #f8f9fa;
+    }
+
+    .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 1.5rem 0;
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+    
+    .divider::before, .divider::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid #dee2e6;
+    }
+    
+    .divider:not(:empty)::before { margin-right: .75em; }
+    .divider:not(:empty)::after { margin-left: .75em; }
+</style>
+
+<div class="custom-auth-page">
+    <div class="login-container">
+        
+        <!-- Lado Esquerdo: Formulário -->
+        <div class="form-section">
+            <div class="form-wrapper">
+                <div class="text-center text-lg-start mb-4">
+                    <h2 class="brand-title">Create an Account</h2>
+                    <p class="subtitle">Join us to explore infinite possibilities.</p>
+                </div>
+
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3" style="color: #dc3545; font-size: 0.875rem;" role="alert"></div>
+                    
+                    <div class="mb-3" style="margin-bottom: 1rem;">
+                        <label asp-for="Input.Email" style="font-weight: 600; margin-bottom: 0.5rem; display: block;">Email</label>
+                        <input asp-for="Input.Email" class="custom-input" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                        <span asp-validation-for="Input.Email" style="color: #dc3545; font-size: 0.875rem;"></span>
+                    </div>
+                    
+                    <div class="mb-3" style="margin-bottom: 1rem;">
+                        <label asp-for="Input.Password" style="font-weight: 600; margin-bottom: 0.5rem; display: block;">Password</label>
+                        <input asp-for="Input.Password" class="custom-input" autocomplete="new-password" aria-required="true" placeholder="••••••••" />
+                        <span asp-validation-for="Input.Password" style="color: #dc3545; font-size: 0.875rem;"></span>
+                    </div>
+
+                    <div class="mb-3" style="margin-bottom: 1rem;">
+                        <label asp-for="Input.ConfirmPassword" style="font-weight: 600; margin-bottom: 0.5rem; display: block;">Confirm Password</label>
+                        <input asp-for="Input.ConfirmPassword" class="custom-input" autocomplete="new-password" aria-required="true" placeholder="••••••••" />
+                        <span asp-validation-for="Input.ConfirmPassword" style="color: #dc3545; font-size: 0.875rem;"></span>
+                    </div>
+                    
+                    <button id="registerSubmit" type="submit" class="btn-custom-primary">Sign Up</button>
+                </form>
+
+                <!-- Área de Registro Externo -->
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) > 0)
+                    {
+                        <div class="divider">or register with</div>
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                            <div>
+                                @foreach (var provider in Model.ExternalLogins!)
+                                {
+                                    <button type="submit" class="btn-outline-dark-custom" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                        Sign up with @provider.DisplayName
+                                    </button>
+                                }
+                            </div>
+                        </form>
+                    }
+                }
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <p style="color: #6c757d; font-size: 0.9rem; margin: 0;">
+                        Already have an account? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" style="color: #667eea; text-decoration: none; font-weight: 600;">Sign in instead</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lado Direito: Imagem -->
+        <div class="image-section">
+            <div>
+                <h1 style="font-weight: 700; font-size: 2.5rem; margin-bottom: 1rem;">Your Brand Here</h1>
+                <p style="font-size: 1.1rem; opacity: 0.9;">Experience the best features tailored just for you.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
