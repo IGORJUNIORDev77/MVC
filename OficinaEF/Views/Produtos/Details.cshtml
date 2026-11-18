@@ -1,0 +1,3 @@
+@model Produto
+@{ ViewData["Title"] = Model.Nome; }
+<h1>@Model.Nome</h1><div class="row g-4"><div class="col-md-5"><partial name="_FotoProduto" model="Model" /></div><div class="col-md-7"><p>@Model.Descricao</p><p>Categoria: @Model.Categoria?.Nome</p><p class="preco">@Model.Preco.ToString("C")</p><p>Estoque: @Model.Estoque</p><a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a><a asp-action="Index" class="btn btn-outline-secondary">Voltar</a></div></div>

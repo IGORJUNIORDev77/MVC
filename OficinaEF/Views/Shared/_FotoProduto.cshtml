@@ -1,0 +1,9 @@
+@model Produto
+@if (!string.IsNullOrWhiteSpace(Model.ImagemUrl))
+{
+    <img src="@Model.ImagemUrl" class="foto-produto" alt="@Model.Nome" loading="lazy" referrerpolicy="no-referrer" />
+}
+else
+{
+    <div class="foto-produto foto-pendente" role="img" aria-label="Produto sem foto">Foto em breve</div>
+}

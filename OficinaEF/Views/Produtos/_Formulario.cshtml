@@ -1,0 +1,10 @@
+@model Produto
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="mb-3"><label asp-for="Nome" class="form-label"></label><input asp-for="Nome" class="form-control" /></div>
+<div class="mb-3"><label asp-for="CategoriaId" class="form-label">Categoria</label><select asp-for="CategoriaId" asp-items="ViewBag.CategoriaId" class="form-select"><option value="">Selecione</option></select></div>
+<div class="mb-3"><label asp-for="Descricao" class="form-label">Descrição</label><textarea asp-for="Descricao" class="form-control"></textarea></div>
+<div class="row"><div class="col-sm-6 mb-3"><label asp-for="Preco" class="form-label">Preço (R$)</label><input asp-for="Preco" type="text" inputmode="decimal" class="form-control" /><small>Exemplo: 149,90.</small></div>
+<div class="col-sm-6 mb-3"><label asp-for="Estoque" class="form-label"></label><input asp-for="Estoque" class="form-control" /></div></div>
+<div class="mb-3"><label asp-for="ImagemUrl" class="form-label">Imagem</label><input asp-for="ImagemUrl" class="form-control" /><small>Use HTTPS ou /images/foto.jpg para um arquivo em wwwroot/images.</small></div>
+<div class="form-check mb-3"><input asp-for="Ativo" class="form-check-input" /><label asp-for="Ativo" class="form-check-label">Exibir na loja</label></div>
+<button class="btn btn-primary">Salvar</button><a asp-action="Index" class="btn btn-outline-secondary">Voltar</a>

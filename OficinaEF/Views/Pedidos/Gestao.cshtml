@@ -1,0 +1,7 @@
+@model IEnumerable<Pedido>
+@{ ViewData["Title"] = "Gerenciar pedidos"; }
+<h1>Pedidos da loja</h1>
+<div class="table-responsive"><table class="table align-middle"><thead><tr><th>Pedido</th><th>Cliente</th><th>Produto</th><th>Total</th><th>Status</th><th>Ações</th></tr></thead><tbody>
+@foreach (var item in Model)
+{ <tr><td>#@item.Id</td><td>@item.Usuario?.Email</td><td>@item.NomeProduto</td><td>@item.ValorTotal.ToString("C")</td><td>@item.Status</td><td><a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Acompanhar</a></td></tr> }
+</tbody></table></div>

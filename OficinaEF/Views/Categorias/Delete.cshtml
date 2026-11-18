@@ -1,0 +1,4 @@
+@model Categoria
+@{ ViewData["Title"] = "Confirmar exclusão"; }
+<h1>Excluir @Model.Nome?</h1><p>Se houver produtos vinculados, altere os vínculos antes da exclusão.</p>
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post"><button class="btn btn-danger">Confirmar exclusão</button><a asp-action="Index" class="btn btn-outline-secondary">Voltar</a></form>

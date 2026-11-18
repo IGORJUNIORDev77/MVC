@@ -3,45 +3,51 @@ using Microsoft.EntityFrameworkCore;
 using OficinaEF.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+var conexao = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("Configure DefaultConnection.");
+builder.Services.AddDbContext<ApplicationDbContext>(opcoes => opcoes.UseSqlServer(conexao));
+builder.Services.AddDefaultIdentity<IdentityUser>(opcoes =>
+{
+    // Na aula local, a conta pode entrar logo após o cadastro.
+    opcoes.SignIn.RequireConfirmedAccount = !builder.Environment.IsDevelopment();
+    opcoes.User.RequireUniqueEmail = true;
+}).AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddRazorPages();
+builder.Services.Configure<RequestLocalizationOptions>(opcoes =>
+    opcoes.SetDefaultCulture("pt-BR").AddSupportedCultures("pt-BR").AddSupportedUICultures("pt-BR"));
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
-    app.UseMigrationsEndPoint();
-}
-else
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseExceptionHandler("/Home/Erro");
     app.UseHsts();
 }
-
+app.UseRequestLocalization();
 app.UseHttpsRedirection();
 app.UseRouting();
-
-app.UseAuthorization(); //Autenticação para te reconhecer
-app.UseAuthorization(); 
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapStaticAssets();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
-app.MapRazorPages()
-   .WithStaticAssets();
-
+app.MapRazorPages().WithStaticAssets();
+// Executado em Development quando o professor configura o ID da conta administrativa.
+if (app.Environment.IsDevelopment() && app.Configuration["Loja:AdminUserId"] is { Length: > 0 } adminId)
+{
+    using var escopo = app.Services.CreateScope();
+    var usuarios = escopo.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+    var roles = escopo.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var conta = await usuarios.FindByIdAsync(adminId)
+        ?? throw new InvalidOperationException("Loja:AdminUserId não corresponde a uma conta cadastrada.");
+    if (!await roles.RoleExistsAsync("Admin"))
+    {
+        var resultado = await roles.CreateAsync(new IdentityRole("Admin"));
+        if (!resultado.Succeeded) throw new InvalidOperationException("Falha ao criar Admin.");
+    }
+    if (!await usuarios.IsInRoleAsync(conta, "Admin"))
+    {
+        var resultado = await usuarios.AddToRoleAsync(conta, "Admin");
+        if (!resultado.Succeeded) throw new InvalidOperationException("Falha ao atribuir Admin.");
+    }
+}
 app.Run();

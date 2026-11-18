@@ -191,6 +191,46 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Categorias/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Categorias/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Categorias/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Categorias/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Categorias/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Categorias/_Formulario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xfRm9ybXVsYXJpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Home/Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Home/Atendente.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBdGVuZGVudGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Home/Cliente.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDbGllbnRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Home/Detalhes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhbGhlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -199,8 +239,52 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Pedidos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Pedidos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Pedidos/Gestao.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xHZXN0YW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Pedidos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Produtos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Produtos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Produtos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Produtos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Produtos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Produtos/_Formulario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcX0Zvcm11bGFyaW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Shared/_FotoProduto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb3RvUHJvZHV0by5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/50391428896/Desktop/backEnd bariri/MVC/OficinaEF/Views/Shared/_LoginPartial.cshtml]

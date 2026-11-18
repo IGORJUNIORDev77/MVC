@@ -1,24 +1,28 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using OficinaEF.Models;
-
+using Microsoft.EntityFrameworkCore;
+using OficinaEF.Data;
 namespace OficinaEF.Controllers;
 
-public class HomeController : Controller
+public class HomeController(ApplicationDbContext contexto) : Controller
 {
-    public IActionResult Index()
+    [HttpGet]
+    public async Task<IActionResult> Index(string? busca, int? categoriaId)
     {
-        return View();
+        var consulta = contexto.Produtos.AsNoTracking().Where(p => p.Ativo);
+        if (!string.IsNullOrWhiteSpace(busca)) consulta = consulta.Where(p => p.Nome.Contains(busca));
+        if (categoriaId.HasValue) consulta = consulta.Where(p => p.CategoriaId == categoriaId);
+        ViewBag.Busca = busca;
+        ViewBag.CategoriaId = categoriaId;
+        ViewBag.Categorias = await contexto.Categorias.AsNoTracking().OrderBy(c => c.Nome).ToListAsync();
+        return View(await consulta.Include(p => p.Categoria).OrderBy(p => p.Nome).ToListAsync());
     }
-
-    public IActionResult Privacy()
+    [HttpGet]
+    public async Task<IActionResult> Detalhes(int id)
     {
-        return View();
+        var produto = await contexto.Produtos.AsNoTracking().Include(p => p.Categoria)
+            .FirstOrDefaultAsync(p => p.Id == id && p.Ativo);
+        if (produto is null) return NotFound();
+        return View(produto);
     }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+    public IActionResult Erro() => Problem("Não foi possível concluir a operação. Tente novamente.");
 }

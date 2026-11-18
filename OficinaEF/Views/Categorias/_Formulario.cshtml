@@ -1,0 +1,5 @@
+@model Categoria
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="mb-3"><label asp-for="Nome" class="form-label"></label><input asp-for="Nome" class="form-control" /></div>
+<div class="mb-3"><label asp-for="Descricao" class="form-label">Descrição</label><textarea asp-for="Descricao" class="form-control"></textarea></div>
+<button class="btn btn-primary">Salvar</button><a asp-action="Index" class="btn btn-outline-secondary">Voltar</a>

@@ -1,0 +1,23 @@
+@model Pedido
+@{ ViewData["Title"] = "Fazer pedido"; }
+<h1>Confira seu pedido</h1>
+<div class="row g-4"><div class="col-md-5"><partial name="_FotoProduto" model="Model.Produto!" /></div><div class="col-md-7">
+<h2 class="h4">@Model.Produto!.Nome</h2><p class="preco">@Model.Produto.Preco.ToString("C") por unidade</p><p>Disponível: @Model.Produto.Estoque</p>
+<form asp-action="Create" method="post"><div asp-validation-summary="All" class="text-danger"></div>
+<input type="hidden" asp-for="ProdutoId" /><input type="hidden" asp-for="CodigoSolicitacao" />
+<input type="hidden" name="versaoProduto" value="@Convert.ToBase64String(Model.Produto.Versao)" />
+<div class="mb-3"><label asp-for="Quantidade" class="form-label"></label><input asp-for="Quantidade" type="number" min="1" max="@Model.Produto.Estoque" class="form-control" id="quantidade" required /></div>
+<p id="total" class="fw-bold" aria-live="polite"></p><button class="btn btn-primary">Confirmar pedido</button><a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Voltar</a>
+</form></div></div>
+@section Scripts {
+<script>
+const preco = @Model.Produto.Preco.ToString(System.Globalization.CultureInfo.InvariantCulture);
+const campo = document.getElementById('quantidade');
+function atualizarTotal() {
+    const quantidade = Math.max(0, Number(campo.value) || 0);
+    document.getElementById('total').textContent = 'Total: ' + (preco * quantidade).toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+}
+campo.addEventListener('input', atualizarTotal);
+atualizarTotal();
+</script>
+}

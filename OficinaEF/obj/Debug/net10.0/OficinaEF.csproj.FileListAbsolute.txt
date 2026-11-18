@@ -654,3 +654,4 @@ C:\Users\50391428896\Desktop\backEnd bariri\MVC\OficinaEF\obj\verify\runtimes\wi
 C:\Users\50391428896\Desktop\backEnd bariri\MVC\OficinaEF\obj\verify\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\50391428896\Desktop\backEnd bariri\MVC\OficinaEF\obj\verify\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\50391428896\Desktop\backEnd bariri\MVC\OficinaEF\obj\verify\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\50391428896\Desktop\backEnd bariri\MVC\OficinaEF\obj\Debug\net10.0\compressed\krby2xlm0f-{0}-va3fwdia52-va3fwdia52.gz

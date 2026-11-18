@@ -1,0 +1,9 @@
+@model Produto
+@{ ViewData["Title"] = Model.Nome; }
+<div class="row g-4"><div class="col-md-6"><partial name="_FotoProduto" model="Model" /></div>
+<div class="col-md-6"><p class="text-muted">@Model.Categoria?.Nome</p><h1>@Model.Nome</h1><p>@Model.Descricao</p>
+<p class="preco">@Model.Preco.ToString("C")</p><p>Estoque: @Model.Estoque</p>
+@if (Model.Estoque > 0)
+{ <a asp-controller="Pedidos" asp-action="Create" asp-route-produtoId="@Model.Id" class="btn btn-primary">Fazer pedido</a> }
+else { <p class="text-danger">Produto esgotado.</p> }
+<a asp-action="Index" class="btn btn-outline-secondary">Voltar</a></div></div>
